@@ -1,3 +1,4 @@
+import Provider from '@/components/auth/Provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -10,8 +11,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html 
+      lang="en"
+      className={`${inter.className} h-full scroll-smooth antialiased`}
+    >
+      <body className='flex h-full flex-col'>
+        <Provider>
+          <main className='grow'>{children}</main>
+        </Provider>
+      </body>
     </html>
   )
 }
