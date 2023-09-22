@@ -10,3 +10,6 @@ export async function POST(req){
   );
   return NextResponse.json(result);
 }
+
+//201 - resource added
+// 

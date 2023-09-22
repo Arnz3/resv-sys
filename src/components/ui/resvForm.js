@@ -22,15 +22,19 @@ export default function ResvForm() {
       naam, email, telefoon, datum, aantal, aankomst, opm
     }
 
-    const res = await fetch('http://localhost:3000/newResv',{
+    console.log(resv);
+
+    const res = await fetch('http://localhost:3000/api/newResv',{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(resv),
     })
+
+
   }
 
   return (
-    <form className='w-1/2'>
+    <form onSubmit={handleSubmit} className='w-1/2'>
       <label>
         <span>Naam:</span>
         <input

@@ -1,5 +1,4 @@
 import Dashboard from "@/components/dashboard/dashboard"
-import executeQuery from "@/lib/db";
 
 const DUMMY_DATA = [
   {
@@ -37,12 +36,18 @@ const DUMMY_DATA = [
   },
 ];
 
-export default function DashboardPage() {
+async function getData(){
+  const res = await fetch("http://localhost:3000/api/getResvs", { next: { revalidate: 900 } });
+  return res.json();
+}
+
+
+export default async function DashboardPage() {
+  const data = await getData();
   return (
     <div>
       <h1>Reserveringen</h1>
-      <Dashboard reserveringen={DUMMY_DATA}/>
+      <Dashboard reserveringen={data}/>
     </div>
-
   )
 }
