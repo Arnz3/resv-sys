@@ -12,4 +12,3 @@ export async function POST(req){
 }
 
 //201 - resource added
-// 

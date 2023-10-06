@@ -1,4 +1,5 @@
 import Dashboard from "@/components/dashboard/dashboard"
+import NavBar from "@/components/ui/navBar";
 
 const DUMMY_DATA = [
   {
@@ -37,7 +38,7 @@ const DUMMY_DATA = [
 ];
 
 async function getData(){
-  const res = await fetch("http://localhost:3000/api/getResvs", { next: { revalidate: 900 } });
+  const res = await fetch("http://localhost:3000/api/reservations", { next: { revalidate: 900 } });
   return res.json();
 }
 
@@ -46,8 +47,11 @@ export default async function DashboardPage() {
   const data = await getData();
   return (
     <div>
-      <h1>Reserveringen</h1>
-      <Dashboard reserveringen={data}/>
+      <NavBar />
+      <main className="p-3">
+        <h1 className="text-3xl">Reserveringen</h1>
+        <Dashboard reserveringen={data}/>
+      </main>
     </div>
   )
 }

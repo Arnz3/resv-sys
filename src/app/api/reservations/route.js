@@ -1,7 +1,7 @@
 import executeQuery from "@/lib/db";
 import { NextResponse } from "next/server";
 
-export async function GET(req){
+export async function GET(){
   const reserveringen = await executeQuery(
     `SELECT * FROM reservering`
   )
