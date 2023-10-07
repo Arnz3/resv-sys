@@ -49,7 +49,9 @@ export default async function DashboardPage() {
     <div>
       <NavBar />
       <main className="p-3">
-        <h1 className="text-3xl">Reserveringen</h1>
+        <div>
+          <h1 className="text-3xl">Reserveringen</h1>
+        </div>
         <Dashboard reserveringen={data}/>
       </main>
     </div>

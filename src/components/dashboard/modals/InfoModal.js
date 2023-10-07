@@ -1,0 +1,35 @@
+"use client"
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button,} from "@nextui-org/react";
+
+import React from 'react'
+
+export default function InfoModal({ reservering, isOpen, onOpenChange}) {
+  const { naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+
+  return (
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <ModalContent>
+        {(onClose) => (
+          <>
+            <ModalHeader className="flex flex-col gap-1">{naam}</ModalHeader>
+            <ModalBody>
+              <ul>
+                <li>{datum}</li>
+                <li>{aankomst}</li>
+                <li>{aantal}</li>
+                <li>{telefoon}</li>
+                <li>{email}</li>
+                <li>{opm}</li>
+              </ul>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="danger" variant="light" onPress={onClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </>
+        )}
+      </ModalContent>
+    </Modal>
+  )
+}

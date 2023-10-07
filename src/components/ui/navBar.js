@@ -15,7 +15,7 @@ export default function NavBar() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <Link>
+          <Link href="/">
             <Image 
               width={100}
               alt="Viking helm"
@@ -27,7 +27,7 @@ export default function NavBar() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <Link>
+          <Link href="/">
             <Image 
               width={100}
               alt="Viking helm"

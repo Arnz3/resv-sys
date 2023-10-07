@@ -7,6 +7,7 @@ CREATE TABLE `reservering` (
   `aantal` int,
   `aankomst` time,
   `opm` varchar(255),
+  `annulatie` varchar(255),
   `status` varchar(255) DEFAULT 'untouched'  -- untouched/goedgekeurd/afgewezen/geannuleerd
 );
 
@@ -32,7 +33,8 @@ CREATE TABLE `blacklist` (
 
 CREATE TABLE `user` (
   `gebruikersnaam` varchar(255) PRIMARY KEY,
-  `wachtwoord` varchar(255)
+  `wachtwoord` varchar(255),
+  `salt` varchar(255)
 );
 
 /*
