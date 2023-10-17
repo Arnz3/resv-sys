@@ -8,7 +8,7 @@ CREATE TABLE `reservering` (
   `aankomst` time,
   `opm` varchar(255),
   `annulatie` varchar(255),
-  `status` varchar(255) DEFAULT 'untouched'  -- untouched/goedgekeurd/afgewezen/geannuleerd
+  `status` varchar(255) DEFAULT 'untouched'  -- untouched/goedgekeurd/afgewezen
 );
 
 

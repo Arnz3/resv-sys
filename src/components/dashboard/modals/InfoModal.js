@@ -8,7 +8,7 @@ export default function InfoModal({ reservering, isOpen, onOpenChange}) {
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-      <ModalContent>
+      <ModalContent className="dark">
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">{naam}</ModalHeader>

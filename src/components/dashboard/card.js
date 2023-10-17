@@ -1,11 +1,8 @@
 "use client"
-import { Card, CardBody, CardFooter, CardHeader, Button, Divider, useDisclosure } from "@nextui-org/react"
-import InfoModal from "./modals/InfoModal";
+import { Card, CardBody, CardFooter, CardHeader, Button, Divider } from "@nextui-org/react"
 
-export default function ResvCard({ reserv }) {
+export default function ResvCard({ reserv, handleInfo, handleMail }) {
   const { naam, datum, aankomst, aantal, telefoon, email } = reserv;
-
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   // TODO:format date
   // let date = new Date()
@@ -14,7 +11,7 @@ export default function ResvCard({ reserv }) {
 
   return (
     <>
-      <Card isPressable onPress={onOpen} className="max-w-[1/3]">
+      <Card isPressable onPress={() => handleInfo(reserv) } className="max-w-[1/3]">
         <CardHeader>
           <p className="text-md font-bold small-">{naam}</p>
         </CardHeader>
@@ -31,19 +28,14 @@ export default function ResvCard({ reserv }) {
         </CardBody>
 
         <CardFooter className="flex gap-4 items-end justify-end pt-0">
-          <Button color="success" variant="faded" size="sm">
+          <Button color="success" variant="faded" size="sm" onPress={() => handleMail(reserv, true)}>
             Goedkeuren
           </Button>
-          <Button color="danger" variant="faded" size="sm">
+          <Button color="danger" variant="faded" size="sm" onPress={() => handleMail(reserv, false)}>
             Weigeren
           </Button>
         </CardFooter>
       </Card>
-      <InfoModal 
-          reservering={reserv}
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-        />
     </>
   );
 }
