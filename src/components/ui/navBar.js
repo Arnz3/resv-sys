@@ -41,7 +41,7 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/history">
+          <Link color="foreground" href="/history" isDisabled>
             History
           </Link>
         </NavbarItem>

@@ -1,5 +1,6 @@
 CREATE TABLE `reservering` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
+  `voornaam` varchar(255),
   `naam` varchar(255),
   `email` varchar(255),
   `telefoon` varchar(15) ,
@@ -14,6 +15,7 @@ CREATE TABLE `reservering` (
 
 CREATE TABLE `history` (
   `id` int PRIMARY KEY,
+  `voornaam` varchar(255),
   `naam` varchar(255),
   `email` varchar(255),
   `telefoon` varchar(15) ,

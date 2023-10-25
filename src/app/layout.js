@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     >
       <body className='flex h-full flex-col'>
         <Provider>
-          <main className='grow dark text-foreground bg-background'>{children}</main>
+          <main className='grow dark text-foreground bg-background m-auto'>{children}</main>
         </Provider>
       </body>
     </html>

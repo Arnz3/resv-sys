@@ -1,7 +1,7 @@
 "use client"
 import { Card, CardBody, CardFooter, CardHeader, Button, Divider } from "@nextui-org/react"
 
-export default function ResvCard({ reserv, handleInfo, handleMail }) {
+export default function ResvCard({ reserv, handleInfo, handleMail, goedkeuren, weigeren }) {
   const { naam, datum, aankomst, aantal, telefoon, email } = reserv;
 
   // TODO:format date
@@ -28,12 +28,16 @@ export default function ResvCard({ reserv, handleInfo, handleMail }) {
         </CardBody>
 
         <CardFooter className="flex gap-4 items-end justify-end pt-0">
-          <Button color="success" variant="faded" size="sm" onPress={() => handleMail(reserv, true)}>
-            Goedkeuren
-          </Button>
-          <Button color="danger" variant="faded" size="sm" onPress={() => handleMail(reserv, false)}>
-            Weigeren
-          </Button>
+          {goedkeuren && (
+            <Button color="success" variant="faded" size="sm" onPress={() => handleMail(reserv, true)}>
+              Goedkeuren
+            </Button>
+          )}
+          {weigeren && (
+            <Button color="danger" variant="faded" size="sm" onPress={() => handleMail(reserv, false)}>
+              Weigeren
+            </Button>
+          )}
         </CardFooter>
       </Card>
     </>

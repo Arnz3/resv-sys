@@ -17,11 +17,12 @@ export default function Dashboard({reserveringen}) {
     onOpenInfo();
   }
 
-  const handleMailModal = (resv, accepted) => {
+  const handleMailModal = (resv, accepted, title, body) => {
     setSelectedResv(resv); 
     setaccepted(accepted);
     onOpenMail();
   }
+
   return (
     <>
       <div className="flex w-full flex-col" > 
@@ -31,6 +32,8 @@ export default function Dashboard({reserveringen}) {
               reserveringen={reserveringen.untouched}
               handleInfo={handleInfoModal}
               handleMail={handleMailModal}
+              goedkeuren
+              weigeren
             />
           </Tab>
           <Tab key="goedgekeurd" title="goedgekeurd">
@@ -38,6 +41,7 @@ export default function Dashboard({reserveringen}) {
               reserveringen={reserveringen.goedgekeurd}
               handleInfo={handleInfoModal}
               handleMail={handleMailModal}
+              weigeren
             />
           </Tab>
           <Tab key="afgewezen" title="afgewezen">
@@ -45,6 +49,7 @@ export default function Dashboard({reserveringen}) {
               reserveringen={reserveringen.afgewezen}
               handleInfo={handleInfoModal}
               handleMail={handleMailModal}
+              goedkeuren
             />
           </Tab>
         </Tabs>

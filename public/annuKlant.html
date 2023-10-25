@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    span {
+        width: 100;
+        height: 150;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div {
+        border: 3px solid white;
+        width: 30vw;
+        height: 70vh;
+        margin-top: 10vh;
+        text-align: center;
+        color: black;
+    }
+
+    div > img {
+        width: 300px;
+    }
+</style>
+
+</head>
+<body>
+    <span>
+    <div>
+        <p>Beste ' . $voornaam . ',</p><br>
+        <p>Uw tafelreservatie voor ' . $date . ' werd succelvol geannuleerd.</p><br>
+        <p>Groeten</p>
+        <p>Viking team</p>
+    </div>
+    </span>
+</body>
+</html>

@@ -1,9 +1,11 @@
 'use client'
 import { useState } from 'react'
+import {Input, Button, Textarea} from "@nextui-org/react";
 
 export default function ResvForm() {
 
   const [naam, setNaam] = useState('');
+  const [voornaam, setVoornaam] = useState('');
   const [email, setEmail] = useState('');
   const [telefoon, setTelefoon] = useState('');
   const [datum, setDatum] = useState('');
@@ -15,7 +17,6 @@ export default function ResvForm() {
 
   // form handler
   const handleSubmit = async(e) => {
-    e.preventDefault();
     setIsLoading(true);
 
     const resv = {
@@ -28,82 +29,88 @@ export default function ResvForm() {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(resv),
-    })
+    });
 
-
+    setIsLoading(false);
   }
 
   return (
-    <form onSubmit={handleSubmit} className='w-1/2'>
-      <label>
-        <span>Naam:</span>
-        <input
-          required
-          type='text'
-          onChange={(e) => setNaam(e.target.value)}
-          value={naam}
-        />
-      </label>
-      <label>
-        <span>E-mail:</span>
-        <input
-          required
-          type='email'
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-      </label>
-      <label>
-        <span>Telefoon:</span>
-        <input
-          required
-          type='tel'
-          onChange={(e) => setTelefoon(e.target.value)}
-          value={telefoon}
-        />
-      </label>
-      <label>
-        <span>Datum:</span>
-        <input
-          required
-          type='date'
-          onChange={(e) => setDatum(e.target.value)}
-          value={datum}
-        />
-      </label>
-      <label>
-        <span>Aantal:</span>
-        <input
-          required
-          type='number'
-          onChange={(e) => setAantal(e.target.value)}
-          value={aantal}
-        />
-      </label>
-      <label>
-        <span>Aankomstuur:</span>
-        <input
-          required
-          type='time'
-          onChange={(e) => setAankomst(e.target.value)}
-          value={aankomst}
-        />
-      </label>
-      <label>
-        <span>Opmerking:</span>
-        <input
-          type='text'
-          onChange={(e) => setOpm(e.target.value)}
-          value={opm}
-        />
-      </label>
-      <button 
-        className='but-primary' 
-        disabled={isLoading}
-      >
-        {isLoading && <span>Verzenden...</span>}
-        {!isLoading && <span>Reserveren</span>}
-      </button>
+    <form onSubmit={handleSubmit} className='lg:w-1/2 grid grid-cols-3 grid-rows-8 gap-4 p-4 lg:p-8'>
+      <Input 
+        isRequired
+        label="Voornaam"
+        type="text"
+        value={voornaam}
+        onValueChange={setVoornaam}
+        variant='bordered'
+      />
+      <Input 
+        isRequired
+        label="Naam"
+        type="text"
+        value={naam}
+        onValueChange={setNaam}
+        variant='bordered'
+        className='col-span-2'
+      />
+      <Input 
+        isRequired
+        label="Email"
+        type="email"
+        value={email}
+        onValueChange={setEmail}
+        variant='bordered'
+        className='col-span-3 row-start-2'
+      />
+      <Input
+        isRequired 
+        label="Telefoon"
+        type="tel"
+        value={telefoon}
+        onValueChange={setTelefoon}
+        variant='bordered'
+        className='col-span-3 row-start-3'
+      />
+      <Input
+        placeholder=' '
+        isRequired 
+        label="Datum"
+        type="date"
+        value={datum}
+        onValueChange={setDatum}
+        variant='bordered'
+        className='col-span-2 row-start-4'
+      />
+      <Input
+        placeholder=' '
+        isRequired 
+        label="Aankomstuur"
+        type="time"
+        value={aankomst}
+        onValueChange={setAankomst}
+        variant='bordered'
+        className='col-start-3 row-start-4'
+      />
+      <Input
+        isRequired 
+        label="Aantal"
+        type="number"
+        value={aantal}
+        onValueChange={setAantal}
+        variant='bordered'
+        className='col-span-3 row-start-5'
+      />
+      <Textarea 
+        label="Opmerking"
+        value={opm}
+        onValueChange={setOpm}
+        variant='bordered'
+        className='col-span-3 row-start-6 row-span-2'
+      />
+      
+      <Button color='default' isLoading={isLoading} onPress={handleSubmit} className='col-start-2 lg:col-start-1'>
+        Reserveren
+      </Button>
     </form>
   )
 }
