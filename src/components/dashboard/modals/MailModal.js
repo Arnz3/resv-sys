@@ -3,7 +3,9 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Textar
 import { useState } from "react";
 
 export default function MailModal({ reservering, isOpen, onOpenChange, accepted}) {
-  const { id, naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+  if(reservering != null){
+    const { id, voornaam, naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+  }
   
   const [onderwerp, setOnderwerp] = useState();
   const [mailbody, setMailbody] = useState();

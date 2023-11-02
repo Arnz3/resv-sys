@@ -4,7 +4,9 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button,} from 
 import React from 'react'
 
 export default function InfoModal({ reservering, isOpen, onOpenChange}) {
-  const { naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+  if(reservering){
+    const { naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+  }
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange}>

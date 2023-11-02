@@ -3,7 +3,7 @@ import NavBar from "@/components/ui/navBar";
 
 
 async function getData(){
-  const res = await fetch("http://localhost:3000/api/reservations", { next: { revalidate: 300 } });
+  const res = await fetch("http://localhost:3000/api/reservations", { next: { revalidate: 5 } });
   return res.json();
 }
 

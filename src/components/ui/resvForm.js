@@ -20,10 +20,8 @@ export default function ResvForm() {
     setIsLoading(true);
 
     const resv = {
-      naam, email, telefoon, datum, aantal, aankomst, opm
+      voornaam, naam, email, telefoon, datum, aantal, aankomst, opm
     }
-
-    console.log(resv);
 
     const res = await fetch('http://localhost:3000/api/newResv',{
       method: "POST",

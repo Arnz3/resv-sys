@@ -2,7 +2,7 @@
 import { Card, CardBody, CardFooter, CardHeader, Button, Divider } from "@nextui-org/react"
 
 export default function ResvCard({ reserv, handleInfo, handleMail, goedkeuren, weigeren }) {
-  const { naam, datum, aankomst, aantal, telefoon, email } = reserv;
+  const { voornaam, naam, datum, aankomst, aantal, telefoon, email } = reserv;
 
   // TODO:format date
   // let date = new Date()
@@ -13,7 +13,7 @@ export default function ResvCard({ reserv, handleInfo, handleMail, goedkeuren, w
     <>
       <Card isPressable onPress={() => handleInfo(reserv) } className="max-w-[1/3]">
         <CardHeader>
-          <p className="text-md font-bold small-">{naam}</p>
+          <p className="text-md font-bold small-">{voornaam} {naam}</p>
         </CardHeader>
         <Divider />
 
