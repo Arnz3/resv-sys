@@ -4,8 +4,10 @@ import { useState } from "react";
 
 export default function MailModal({ reservering, isOpen, onOpenChange, accepted}) {
   const { id, naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
-  const [onderwerp, setOnderwerp] = useState(accepted ? "Reservering Goedgekeurd" : "Reservering Geweigerd");
-  const [mailbody, setMailbody] = useState(accepted ? "Uw reservering werd goedgekeurd" : "Uw reservering werd geweigerd");
+  
+  const [onderwerp, setOnderwerp] = useState();
+  const [mailbody, setMailbody] = useState();
+  
 
   const handleButton = () => {
     const postData = {
