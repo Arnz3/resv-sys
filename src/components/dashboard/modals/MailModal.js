@@ -2,15 +2,15 @@
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Textarea, Input} from "@nextui-org/react";
 import { useState } from "react";
 
-export default function MailModal({ reservering, isOpen, onOpenChange, accepted}) {
-  if(reservering != null){
-    const { id, voornaam, naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
-  }
-  
+export default function MailModal({ reservering, isOpen, onOpenChange, accepted }) {
   const [onderwerp, setOnderwerp] = useState();
   const [mailbody, setMailbody] = useState();
-  
 
+  if(typeof reservering == "undefined"){
+    return "";
+  } 
+  const { id, voornaam, naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+  
   const handleButton = () => {
     const postData = {
       id: id,
@@ -32,13 +32,13 @@ export default function MailModal({ reservering, isOpen, onOpenChange, accepted}
       <ModalContent className="dark">
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">{naam}</ModalHeader>
+            <ModalHeader className="flex flex-col gap-1">{voornaam} {naam}</ModalHeader>
             <ModalBody>
               <Input 
                 type="text"
                 label="onderwerp"
                 defaultValue={accepted ? "Reservering Goedgekeurd" : "Reservering Geweigerd"}
-                className="maw-w-xs"
+                className="max-w-xs"
                 value={onderwerp}
                 onValueChange={setOnderwerp}
               />

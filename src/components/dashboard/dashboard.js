@@ -6,7 +6,7 @@ import MailModal from "./modals/MailModal";
 import DashTab from "./tabs/dashTab";
 
 export default function Dashboard({reserveringen}) {
-  const [selectedResv, setSelectedResv] = useState(null);
+  const [selectedResv, setSelectedResv] = useState();
   const [accepted, setaccepted] = useState(true);
   
   const {isOpen:isOpenInfo, onOpen:onOpenInfo, onOpenChange:openChangeInfo} = useDisclosure();

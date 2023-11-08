@@ -4,11 +4,12 @@ import { SessionProvider } from 'next-auth/react';
 
 
 
+
 const Provider = ({ children }) => {
   return(
     <NextUIProvider>
       <SessionProvider>
-        {children}
+          {children}
       </SessionProvider>
     </NextUIProvider>
   );

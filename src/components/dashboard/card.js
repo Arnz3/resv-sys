@@ -1,5 +1,7 @@
 "use client"
 import { Card, CardBody, CardFooter, CardHeader, Button, Divider } from "@nextui-org/react"
+import { BsFillCalendarDateFill, BsFillPersonFill, BsFillTelephoneFill } from "react-icons/bs"
+import { MdEmail } from "react-icons/md";
 
 export default function ResvCard({ reserv, handleInfo, handleMail, goedkeuren, weigeren }) {
   const { voornaam, naam, datum, aankomst, aantal, telefoon, email } = reserv;
@@ -19,11 +21,10 @@ export default function ResvCard({ reserv, handleInfo, handleMail, goedkeuren, w
 
         <CardBody className="py-2">
           <ul>
-            <li>{datum}</li>
-            <li>{aankomst}</li>
-            <li>{aantal}</li>
-            <li>{telefoon}</li>
-            <li>{email}</li>
+            <li className="flex"><BsFillCalendarDateFill /> {datum} {aankomst}</li>
+            <li className="flex"><BsFillPersonFill /> {aantal}</li>
+            <li className="flex"><BsFillTelephoneFill /> {telefoon}</li>
+            <li className="flex"><MdEmail />{email}</li>
           </ul>
         </CardBody>
 
