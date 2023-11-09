@@ -8,7 +8,7 @@ export default function InfoModal({ reservering, isOpen, onOpenChange}) {
     return "";
   } 
 
-  const { voornaam, naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+  const { voornaam, naam, date_string, time_string, aantal, telefoon, email, opm } = reservering;
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -19,8 +19,8 @@ export default function InfoModal({ reservering, isOpen, onOpenChange}) {
             <Divider />
             <ModalBody>
               <ul>
-                <li>{datum}</li>
-                <li>{aankomst}</li>
+                <li>{date_string}</li>
+                <li>{time_string}</li>
                 <li>{aantal}</li>
                 <li>{telefoon}</li>
                 <li>{email}</li>

@@ -25,9 +25,9 @@ export default function Dashboard({reserveringen}) {
 
   return (
     <>
-      <div className="flex w-full flex-col" > 
+      <div className="flex w-full flex-col py-3" > 
         <Tabs aria-label="Options">
-          <Tab key="untouched" title="untouched">
+          <Tab key="untouched" title="untouched" className="text-base">
             <DashTab
               reserveringen={reserveringen.untouched}
               handleInfo={handleInfoModal}
@@ -36,7 +36,7 @@ export default function Dashboard({reserveringen}) {
               weigeren
             />
           </Tab>
-          <Tab key="goedgekeurd" title="goedgekeurd">
+          <Tab key="goedgekeurd" title="goedgekeurd" className="text-base">
             <DashTab 
               reserveringen={reserveringen.goedgekeurd}
               handleInfo={handleInfoModal}
@@ -44,7 +44,7 @@ export default function Dashboard({reserveringen}) {
               weigeren
             />
           </Tab>
-          <Tab key="afgewezen" title="afgewezen">
+          <Tab key="afgewezen" title="afgewezen" className="text-base">
             <DashTab 
               reserveringen={reserveringen.afgewezen}
               handleInfo={handleInfoModal}

@@ -8,10 +8,10 @@ export async function POST(req){
   const { id, email, accept, title, body} = data;
 
   if (accept){
-    executeQuery(`UPDATE reservering SET status='goedgekeurd' WHERE id='${id}';`);
+    await executeQuery(`UPDATE reservering SET status='goedgekeurd' WHERE id='${id}';`);
     sendVikingMail(email, {title, body});
   }else{
-    executeQuery(`UPDATE reservering SET status='afgewezen' WHERE id='${id}';`);
+    await executeQuery(`UPDATE reservering SET status='afgewezen' WHERE id='${id}';`);
     sendVikingMail(email, {title, body});
   }
   

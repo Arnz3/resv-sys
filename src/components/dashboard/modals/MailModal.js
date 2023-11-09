@@ -1,15 +1,20 @@
 "use client"
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Textarea, Input} from "@nextui-org/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MailModal({ reservering, isOpen, onOpenChange, accepted }) {
   const [onderwerp, setOnderwerp] = useState();
   const [mailbody, setMailbody] = useState();
 
+  useEffect(() => {
+    setOnderwerp(accepted ? "Reservering Goedgekeurd" : "Reservering Geweigerd");
+    setMailbody(accepted ? "Uw reservering werd goedgekeurd" : "Uw reservering werd geweigerd");
+  }, [accepted]);
+
   if(typeof reservering == "undefined"){
     return "";
   } 
-  const { id, voornaam, naam, datum, aankomst, aantal, telefoon, email, opm } = reservering;
+  const { id, voornaam, naam, date_string, time_string, aantal, telefoon, email, opm } = reservering;
   
   const handleButton = () => {
     const postData = {
@@ -18,7 +23,8 @@ export default function MailModal({ reservering, isOpen, onOpenChange, accepted 
       accept: accepted,
       title: onderwerp,
       body: mailbody
-    }
+    };
+    console.log(postData);
 
     fetch('http://localhost:3000/api/accept',{
       method: "POST",
@@ -37,15 +43,14 @@ export default function MailModal({ reservering, isOpen, onOpenChange, accepted 
               <Input 
                 type="text"
                 label="onderwerp"
-                defaultValue={accepted ? "Reservering Goedgekeurd" : "Reservering Geweigerd"}
-                className="max-w-xs"
+                labelPlacement="outside"
+                className="max-w-s"
                 value={onderwerp}
                 onValueChange={setOnderwerp}
               />
               <Textarea
                 label="body"
                 labelPlacement="outside"
-                defaultValue={accepted ? "Uw reservering werd goedgekeurd" : "Uw reservering werd geweigerd"}
                 className="max-w-s"
                 value={mailbody}
                 onValueChange={setMailbody}
@@ -55,7 +60,7 @@ export default function MailModal({ reservering, isOpen, onOpenChange, accepted 
               <Button color="danger" variant="light" onPress={onClose}>
                 Close
               </Button>
-              <Button color="primary" onPress={handleButton}>
+              <Button color="primary" onPress={() => {handleButton(); onClose()} }>
                 { accepted ? "Goedkeuren" : "Weigeren"}
               </Button>
             </ModalFooter>

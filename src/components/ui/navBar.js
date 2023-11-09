@@ -36,19 +36,19 @@ export default function NavBar() {
           </Link>
         </NavbarBrand>
         <NavbarItem>
-          <Link color="foreground" href="/dashboard">
+          <Link color="foreground" href="/dashboard" className="text-lg" >
             Dashboard
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/history" isDisabled>
+          <Link color="foreground" href="/history" isDisabled className="text-lg">
             History
           </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <Button as={Link} color="primary" href="#" variant="flat">
+        <Button as={Link} color="primary" href="#" variant="flat" className="text-base">
             Logout
         </Button>
       </NavbarContent>
