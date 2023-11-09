@@ -1,54 +1,10 @@
-DUMMY = [
-	{
-		"id": 2,
-		"naam": "Dré Vanhoucke",
-		"email": "dre_vanhoucke@hotmail.be",
-		"telefoon": "0494431518",
-		"datum": "2023-10-06T22:00:00.000Z",
-		"aantal": 6,
-		"aankomst": "23:00:00",
-		"opm": "",
-		"annulatie": null,
-		"status": "untouched"
-	},
-	{
-		"id": 3,
-		"naam": "Arno",
-		"email": "cuyversarno@gmail.com",
-		"telefoon": "0468348434",
-		"datum": "1899-11-29T23:00:00.000Z",
-		"aantal": 12,
-		"aankomst": "00:00:22",
-		"opm": "dit is een test!",
-		"annulatie": null,
-		"status": "untouched"
-	},
-  {
-		"id": 4,
-		"naam": "Arno",
-		"email": "cuyversarno@gmail.com",
-		"telefoon": "0468348434",
-		"datum": "1899-11-29T23:00:00.000Z",
-		"aantal": 12,
-		"aankomst": "00:00:22",
-		"opm": "dit is een test!",
-		"annulatie": null,
-		"status": "goedgekeurd"
-	},
-  {
-		"id": 4,
-		"naam": "Arno",
-		"email": "cuyversarno@gmail.com",
-		"telefoon": "0468348434",
-		"datum": "1899-11-29T23:00:00.000Z",
-		"aantal": 12,
-		"aankomst": "00:00:22",
-		"opm": "dit is een test!",
-		"annulatie": null,
-		"status": "afgewezen"
-	}
-]
+const datum = "2023-11-21T23:00:00.000Z";
+const tijd = "22:22:00";
 
+let date = new Date(datum);
+let options_date = { year: "numeric", month:"short", day:"2-digit" };
+let date_string = date.toLocaleDateString("nl-BE", options_date);
+let time_string = tijd.substring(0,5);
 
-const result = DUMMY.filter((resrv) => resrv.status == "afgewezen");
-console.log(result);
+console.log(date_string);
+console.log(time_string);
