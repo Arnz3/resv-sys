@@ -6,14 +6,14 @@ import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { BiSolidTimeFive } from "react-icons/bi";
 
 export default function ResvCard({ reserv, handleInfo, handleMail, goedkeuren, weigeren }) {
-  const { id, voornaam, naam, datum, aankomst, aantal, telefoon, email } = reserv;
+  const { id, voornaam, naam, datum, aankomst, aantal, telefoon, email, opm } = reserv;
 
   let date = new Date(datum);
   let options_date = { year: "numeric", month:"short", day:"2-digit" };
   let date_string = date.toLocaleDateString("nl-BE", options_date);
   let time_string = aankomst.substring(0,5);
   
-  reserv = { id, voornaam, naam, date_string, time_string, aantal, telefoon, email };
+  reserv = { id, voornaam, naam, date_string, time_string, aantal, telefoon, email, opm };
 
   return (
     <>

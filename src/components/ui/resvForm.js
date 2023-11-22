@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import {Input, Button, Textarea} from "@nextui-org/react";
 
-export default function ResvForm() {
+export default function ResvForm({strict}) {
 
   const [naam, setNaam] = useState('');
   const [voornaam, setVoornaam] = useState('');
@@ -105,10 +105,12 @@ export default function ResvForm() {
         variant='bordered'
         className='col-span-3 row-start-6 row-span-2'
       />
-      
-      <Button color='default' isLoading={isLoading} onPress={handleSubmit} className='col-start-2 lg:col-start-1'>
-        Reserveren
-      </Button>
+      {
+        strict && 
+        <Button color='default' isLoading={isLoading} onPress={handleSubmit} className='col-start-2 lg:col-start-1'>
+          Reserveren
+        </Button>
+      }
     </form>
   )
 }

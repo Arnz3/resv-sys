@@ -1,11 +1,13 @@
 "use client"
-import { useDisclosure, Tabs, Tab } from "@nextui-org/react";
+import { useDisclosure, Tabs, Tab, Spinner } from "@nextui-org/react";
 import { useState } from "react";
 import InfoModal from "./modals/InfoModal";
 import MailModal from "./modals/MailModal";
 import DashTab from "./tabs/dashTab";
+import { useQuery } from "react-query";
+import axios from "axios";
 
-export default function Dashboard({reserveringen}) {
+export default function Dashboard() {
   const [selectedResv, setSelectedResv] = useState();
   const [accepted, setaccepted] = useState(true);
   
@@ -23,13 +25,34 @@ export default function Dashboard({reserveringen}) {
     onOpenMail();
   }
 
+  const {isLoading, data, refetch} = useQuery(
+    'reserveringen',
+    async () => {
+      const res = await axios.get("http://localhost:3000/api/reservations");
+      return res.data; // TODO: test dit
+    },
+    {
+      refetchInterval: 10000,
+      refetchIntervalInBackground: true,
+    }
+  )
+
+  if (isLoading){
+    return( 
+      <div className="flex w-full justify-center h-full items-center">
+        <Spinner size="lg"/>
+      </div>
+    );
+  }
+  
+
   return (
     <>
       <div className="flex w-full flex-col py-3" > 
         <Tabs aria-label="Options">
           <Tab key="untouched" title="untouched" className="text-base">
             <DashTab
-              reserveringen={reserveringen.untouched}
+              reserveringen={data.untouched}
               handleInfo={handleInfoModal}
               handleMail={handleMailModal}
               goedkeuren
@@ -38,7 +61,7 @@ export default function Dashboard({reserveringen}) {
           </Tab>
           <Tab key="goedgekeurd" title="goedgekeurd" className="text-base">
             <DashTab 
-              reserveringen={reserveringen.goedgekeurd}
+              reserveringen={data.goedgekeurd}
               handleInfo={handleInfoModal}
               handleMail={handleMailModal}
               weigeren
@@ -46,7 +69,7 @@ export default function Dashboard({reserveringen}) {
           </Tab>
           <Tab key="afgewezen" title="afgewezen" className="text-base">
             <DashTab 
-              reserveringen={reserveringen.afgewezen}
+              reserveringen={data.afgewezen}
               handleInfo={handleInfoModal}
               handleMail={handleMailModal}
               goedkeuren
@@ -64,6 +87,7 @@ export default function Dashboard({reserveringen}) {
         isOpen={isOpenMail}
         onOpenChange={openChangeMail}
         accepted={accepted}
+        onChange={refetch}
       />
     </>
   );

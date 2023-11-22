@@ -2,7 +2,7 @@
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Textarea, Input} from "@nextui-org/react";
 import { useState, useEffect } from "react";
 
-export default function MailModal({ reservering, isOpen, onOpenChange, accepted }) {
+export default function MailModal({ reservering, isOpen, onOpenChange, accepted, onChange }) {
   const [onderwerp, setOnderwerp] = useState();
   const [mailbody, setMailbody] = useState();
 
@@ -24,7 +24,6 @@ export default function MailModal({ reservering, isOpen, onOpenChange, accepted 
       title: onderwerp,
       body: mailbody
     };
-    console.log(postData);
 
     fetch('http://localhost:3000/api/accept',{
       method: "POST",
@@ -60,7 +59,7 @@ export default function MailModal({ reservering, isOpen, onOpenChange, accepted 
               <Button color="danger" variant="light" onPress={onClose}>
                 Close
               </Button>
-              <Button color="primary" onPress={() => {handleButton(); onClose()} }>
+              <Button color="primary" onPress={() => {handleButton(); onClose(); onChange()} }>
                 { accepted ? "Goedkeuren" : "Weigeren"}
               </Button>
             </ModalFooter>
