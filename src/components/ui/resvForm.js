@@ -33,9 +33,9 @@ export default function ResvForm({strict}) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='lg:w-1/2 grid grid-cols-3 grid-rows-8 gap-4 p-4 lg:p-8'>
+    <form onSubmit={handleSubmit} className=' grid grid-cols-3 grid-rows-8 gap-4 p-4'>
       <Input 
-        isRequired
+        isRequired={strict}
         label="Voornaam"
         type="text"
         value={voornaam}
@@ -43,7 +43,7 @@ export default function ResvForm({strict}) {
         variant='bordered'
       />
       <Input 
-        isRequired
+        isRequired={strict}
         label="Naam"
         type="text"
         value={naam}
@@ -52,7 +52,7 @@ export default function ResvForm({strict}) {
         className='col-span-2'
       />
       <Input 
-        isRequired
+        isRequired={strict}
         label="Email"
         type="email"
         value={email}
@@ -61,7 +61,7 @@ export default function ResvForm({strict}) {
         className='col-span-3 row-start-2'
       />
       <Input
-        isRequired 
+        isRequired={strict} 
         label="Telefoon"
         type="tel"
         value={telefoon}
@@ -71,7 +71,7 @@ export default function ResvForm({strict}) {
       />
       <Input
         placeholder=' '
-        isRequired 
+        isRequired={strict} 
         label="Datum"
         type="date"
         value={datum}
@@ -81,7 +81,7 @@ export default function ResvForm({strict}) {
       />
       <Input
         placeholder=' '
-        isRequired 
+        isRequired={strict} 
         label="Aankomstuur"
         type="time"
         value={aankomst}
@@ -90,7 +90,7 @@ export default function ResvForm({strict}) {
         className='col-start-3 row-start-4'
       />
       <Input
-        isRequired 
+        isRequired={strict} 
         label="Aantal"
         type="number"
         value={aantal}
@@ -105,12 +105,10 @@ export default function ResvForm({strict}) {
         variant='bordered'
         className='col-span-3 row-start-6 row-span-2'
       />
-      {
-        strict && 
-        <Button color='default' isLoading={isLoading} onPress={handleSubmit} className='col-start-2 lg:col-start-1'>
-          Reserveren
-        </Button>
-      }
+
+      <Button color='default' isLoading={isLoading} onPress={handleSubmit} className='col-start-2 lg:col-start-1'>
+        {strict ? "Reserveren" : "Toevoegen"}
+      </Button>
     </form>
   )
 }

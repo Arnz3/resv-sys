@@ -29,7 +29,7 @@ export default function Dashboard() {
     'reserveringen',
     async () => {
       const res = await axios.get("http://localhost:3000/api/reservations");
-      return res.data; // TODO: test dit
+      return res.data;
     },
     {
       refetchInterval: 10000,
@@ -44,7 +44,6 @@ export default function Dashboard() {
       </div>
     );
   }
-  
 
   return (
     <>
