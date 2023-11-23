@@ -49,7 +49,8 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <Link href="/instellingen" color="foreground" className="hidden sm:flex gap-4">
+        {/* <Link href="/instellingen" color="foreground" className="hidden sm:flex gap-4"> */}
+        <Link href="/instellingen" color="foreground" className="hidden">
           <MdSettings />
         </Link>
         <Button as={Link} color="primary" href="#" variant="flat" className="text-base">
