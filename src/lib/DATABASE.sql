@@ -39,12 +39,13 @@ CREATE TABLE `user` (
   `salt` varchar(255)
 );
 
-/*
-CREATE USER 'klant'@'%' IDENTIFIED BY 'kl@ntV!k!ng2023';
-GRANT INSERT ON <database>.reservering TO 'klant'@'%';
-GRANT SELECT,INSERT ON <database>.email_voorkeur TO 'klant'@'%';
-GRANT SELECT,INSERT ON <database>.telefoon_voorkeur TO 'klant'@'%';
 
-CREATE USER 'moderator'@'%' IDENTIFIED BY 'Ty@zZeSp3ci@leStoel';
-GRANT INSERT,SELECT,DELETE ON *.* TO 'moderator'@'%'
-*/
+SET GLOBAL event_scheduler="ON";
+
+CREATE DEFINER=`root`@`localhost` EVENT `archive_resv` ON SCHEDULE EVERY 1 MINUTE STARTS '2023-11-23 16:38:33' ON COMPLETION PRESERVE ENABLE COMMENT 'moves reservations where the date expired to history table' DO BEGIN
+  INSERT INTO history (id, naam, voornaam, email, telefoon, datum, aantal, aankomst, status) 
+  SELECT id, naam, voornaam, email, telefoon, datum, aantal, aankomst, status 
+  FROM reservering WHERE datum < CURRENT_DATE();
+  DELETE FROM reservering WHERE datum < CURRENT_DATE();
+END
+
