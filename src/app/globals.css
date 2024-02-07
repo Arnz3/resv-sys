@@ -7,8 +7,23 @@
   src: url("../../public/Bison-bold.ttf");
 }
 
+@font-face {
+  font-family: "Viking";
+  src: url("../../public/Viking.ttf");
+}
+
 * {
   font-family: "Bison";
+}
+
+.printDiv{
+  break-inside: avoid;
+}
+
+.printText {
+  font-family: "Viking";
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 :root {
@@ -34,3 +49,4 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+

@@ -3,6 +3,7 @@ import { useDisclosure, Tabs, Tab, Spinner } from "@nextui-org/react";
 import { useState } from "react";
 import InfoModal from "./modals/InfoModal";
 import MailModal from "./modals/MailModal";
+import PrintCards from "./printCards";
 import DashTab from "./tabs/dashTab";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -47,7 +48,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="flex w-full flex-col py-3" > 
+      <div className="flex w-full flex-col py-3 print:hidden" > 
         <Tabs aria-label="Options">
           <Tab key="untouched" title="untouched" className="text-base">
             <DashTab
@@ -88,6 +89,9 @@ export default function Dashboard() {
         accepted={accepted}
         onChange={refetch}
       />
+      <div className="hidden print:block">
+        <PrintCards reserveringen={data.goedgekeurd}/>
+      </div>
     </>
   );
 }

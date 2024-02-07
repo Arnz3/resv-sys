@@ -10,22 +10,26 @@ export default function DashboardPage() {
   const {isOpen:isOpenNew, onOpen:onOpenNew, onOpenChange:openChangeNew} = useDisclosure()
 
   return (
-    <div>
-      <NavBar />
-      <main className="p-3">
-        <div className="flex justify-around">
-          <h1 className="text-3xl">Reserveringen</h1>
-          <div className="flex gap-10">
-            <Button variant="ghost" startContent={<MdOutlineAddCircle />} onClick={onOpenNew}>Reservering</Button>
-            <Button variant="ghost" startContent={<MdPrint/>}>Print</Button>
-          </div>
+    <div >
+      <div>
+        <div className="print:hidden">
+          <NavBar />
         </div>
-        <Dashboard />
-      </main>
-      <NewResModal 
-        isOpen={isOpenNew}
-        onOpenChange={openChangeNew}
-      />
+        <main className="p-3">
+          <div className="flex justify-around print:hidden">
+            <h1 className="text-3xl">Reserveringen</h1>
+            <div className="flex gap-10">
+              <Button variant="ghost" startContent={<MdOutlineAddCircle />} onClick={onOpenNew}>Reservering</Button>
+              <Button variant="ghost" startContent={<MdPrint/>} onClick={() => window.print()}>Print</Button>
+            </div>
+          </div>
+          <Dashboard />
+        </main>
+        <NewResModal 
+          isOpen={isOpenNew}
+          onOpenChange={openChangeNew}
+        />
+      </div>
     </div>
   )
 }
