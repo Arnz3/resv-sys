@@ -1,10 +1,13 @@
-const datum = "2023-11-21T23:00:00.000Z";
-const tijd = "22:22:00";
+const { default: sendVikingMail } = require("./mail");
+const { default:  mailNrViking } = require("./mailTemplates");
 
-let date = new Date(datum);
-let options_date = { year: "numeric", month:"short", day:"2-digit" };
-let date_string = date.toLocaleDateString("nl-BE", options_date);
-let time_string = tijd.substring(0,5);
-
-console.log(date_string);
-console.log(time_string);
+sendVikingMail("cuyversarno@gmail.com", {title: "test", body: mailNrViking({
+  voornaam: "Arno",
+  naam: "Cuvyers",
+  datum: "9/11/2001",
+  email: "cuyversarno@gmail.com",
+  phone: "0468348434",
+  aantal: "4",
+  time: "08:00",
+  opm: "dit is een test!"
+})});

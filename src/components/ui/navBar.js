@@ -1,6 +1,7 @@
 "use client"
 import { Navbar, NavbarBrand, NavbarContent, Image, Link, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Button } from "@nextui-org/react";
 import { MdSettings } from "react-icons/md";
+import LogoutButton from "./LogoutButton";
 
 export default function NavBar() {
   const menuItems = [
@@ -53,9 +54,7 @@ export default function NavBar() {
         <Link href="/instellingen" color="foreground" className="hidden">
           <MdSettings />
         </Link>
-        <Button as={Link} color="primary" href="#" variant="flat" className="text-base">
-            Logout
-        </Button>
+        <LogoutButton />
       </NavbarContent>
 
       <NavbarMenu>
